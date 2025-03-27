@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陈美静的个人网站</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6C5CE7;
+            --secondary-color: #A66EFA;
+            --text-color: #2D3436;
+            --bg-color: #F8F9FA;
+            --transition: all 0.4s ease;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            list-style-type: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-text {
+            text-align: left;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .experience,
+        .skills,
+        .contact {
+            padding: 4rem 2rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary-color);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            width: calc(50% - 4rem);
+            padding: 2rem;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .timeline-item:nth-child(odd) {
+            margin-left: auto;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            top: 2rem;
+        }
+
+        .timeline-item:nth-child(odd)::before {
+            left: -34px;
+        }
+
+        .timeline-item:nth-child(even)::before {
+            right: -34px;
+        }
+
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-item {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-item i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            text-align: center;
+        }
+
+        .social-links a {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .timeline::before {
+                left: 2rem;
+            }
+
+            .timeline-item {
+                width: 100%;
+                margin-left: 4rem;
+            }
+
+            .timeline-item::before {
+                left: -34px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">陈美静</div>
+            <ul class="nav-links">
+                <li><a href="#about">关于我</a></li>
+                <li><a href="#experience">经历</a></li>
+                <li><a href="#skills">技能</a></li>
+                <li><a href="#contact">联系我</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="about">
+        <div class="hero-content">
+            <img src="CHEN Meijing 24439630.jpg" alt="陈美静的照片">
+            <div class="hero-text">
+                <h1>数据驱动，创新赋能</h1>
+                <p>数据运营与AI领域的探索者，致力于用数据和技术推动业务增长。</p>
+                <a href="#" class="btn">了解更多</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="experience" id="experience">
+        <h2>经历</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>香港浸会大学 - 计算机科学与技术(人工智能与数字媒体) - 硕士</h3>
+                <p class="time">2024.08 - 2025.11</p>
+                <p>聚焦人工智能在媒体内容创作、传播及用户交互领域的应用研究。</p>
+            </div>
+            <div class="timeline-item">
+                <h3>浙江传媒学院 - 影视摄影与制作 - 本科</h3>
+                <p class="time">2019.09 - 2023.06</p>
+                <p>系统学习影视创作全流程知识，培养了敏锐的视觉感知与内容策划能力。</p>
+            </div>
+            <div class="timeline-item">
+                <h3>字节跳动 - 频道运营(Global Selling)</h3>
+                <p class="time">2024.03 - 2024.07</p>
+                <ul>
+                    <li>商城频道运营优化，场景买家增长35%，停留时长延长20%。</li>
+                    <li>大促活动销售额提升40%，参与活动买家数量增加35%。</li>
+                    <li>协助优化货盘与促销策略，重点商家货盘成交率提升30%，频道GMV上涨45%。</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h3>淘天集团 - 私域运营(天猫事业群-友品海购)</h3>
+                <p class="time">2023.03 - 2023.06</p>
+                <ul>
+                    <li>为美妆中小店主推送种草文案，助力店铺月销售额增长40%。</li>
+                    <li>“618”活动推送方案触达率达75%，转化率提升30%。</li>
+                    <li>制定SOP，推送效率提升25%，转化效果改善。</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h3>喜马拉雅 - 内容运营(职场事业部)</h3>
+                <p class="time">2021.11 - 2022.01</p>
+                <ul>
+                    <li>单个音频点击率提升60%，《职者见智》收听量达1000万次。</li>
+                    <li>调整音频剧集和标题简介，播放完成率提升35%。</li>
+                    <li>维护主播社群，解答疑问超80次，提升主播满意度。</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h3>Intelligent Communication: Cloud and AI Solutions - 策划</h3>
+                <p class="time">2025.01 - 2025.04</p>
+                <ul>
+                    <li>在华为云平台开发跑步社区媒体工具，社区成员参与度提高40%。</li>
+                    <li>获得华为云技术初级认证。</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h3>Vestiaire Collective user trading behavior analysis - 数据分析</h3>
+                <p class="time">2024.11 - 2024.12</p>
+                <p>利用数据分析工具挖掘用户行为模式，为平台运营和营销提供支撑。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="skills" id="skills">
+        <h2>技能</h2>
+        <div class="skill-grid">
+            <div class="skill-item">
+                <i class="fas fa-database"></i>
+                <h3>数据处理</h3>
+                <p>熟练掌握SQL、Python，擅长数据清洗、分析与可视化。</p>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-tools"></i>
+                <h3>办公与工具</h3>
+                <p>精通MS office、Bloomberg、Google Workplace，熟悉Gen AI、PS。</p>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-pen"></i>
+                <h3>内容策划</h3>
+                <p>具备优秀的内容策划能力，能打造吸引人的营销内容。</p>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-language"></i>
+                <h3>语言能力</h3>
+                <p>雅思6.5，英语沟通流利，粤语听说熟练。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>联系我</h2>
+        <div class="contact-info">
+            <p><i class="fas fa-phone"></i> 18922629988</p>
+            <p><i class="fas fa-envelope"></i> 1042691349@qq.com</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-weixin"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 陈美静. 版权所有.</p>
+    </footer>
+</body>
+
+</html>    
